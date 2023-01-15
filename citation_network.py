@@ -156,7 +156,7 @@ for index, row in df.iterrows():
 
 # Compute the degree centrality of each node and add it to the dataframe with all the case information
 degree_centrality = nx.degree_centrality(G)
-degree_centrality = {k: round(v, 2) for k, v in degree_centrality.items()}  # Round
+degree_centrality = {k: round(v * 1, 2) for k, v in degree_centrality.items()}  # Round
 
 # Compute the eigenvector centrality of each node
 eigenvector_centrality = nx.eigenvector_centrality(G)
@@ -194,7 +194,7 @@ for key, value in pos.items():
     # Find the row in the results_df dataframe where the "name_abbreviation" column matches the key
     row = results_df[results_df['name_abbreviation'] == key]
     # Concatenate the values of the row except for the 'url' column with "<br>" in between
-    new_key = key + "<br>" + "<br>".join(row.applymap(str).values[0])
+    new_key = "<br>".join(row.applymap(str).values[0])
     annotated_case_text[new_key] = value
 
 # Create a Scatter 3D trace with the node coordinates and labels
