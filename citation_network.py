@@ -156,6 +156,8 @@ for index, row in df.iterrows():
 
 # Compute the degree centrality of each node and add it to the dataframe with all the case information
 degree_centrality = nx.degree_centrality(G)
+degree_centrality = {k: round(v, 2) for k, v in degree_centrality.items()}  # Round
+
 # Compute the eigenvector centrality of each node
 eigenvector_centrality = nx.eigenvector_centrality(G)
 eigenvector_centrality = {k: round(v * 1000, 2) for k, v in eigenvector_centrality.items()}  # Round
